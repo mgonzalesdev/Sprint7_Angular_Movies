@@ -1,0 +1,13 @@
+<h2>Películas</h2>
+@if (movies()) {
+<div class="movie-grid">
+    @for (movie of movies(); track movie.id) {
+    <!-- ... -->
+    <div class="card">
+        <h3>{{movie.title}}</h3>
+        <p>{{movie.releaseDate}} </p>
+        <p>{{movie.img}} </p>
+    </div>
+    }
+</div>
+}
