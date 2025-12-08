@@ -3,11 +3,8 @@
 <div class="movie-grid">
     @for (movie of movies(); track movie.id) {
     <!-- ... -->
-    <div class="card">
-        <h3>{{movie.title}}</h3>
-        <p>{{movie.releaseDate}} </p>
-        <p>{{movie.img}} </p>
-    </div>
+
+    <app-movie-card [movie]="movie"></app-movie-card>
     }
 </div>
 }

@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from "@environments/environment";
-import { MovieDbResponse, ApiMovieData, Movie } from "@shared/interfaces/movie";
+import { MovieDbResponse, ApiMovieData, Movie, ApiMovieDetails, MovieDetails } from "@shared/interfaces/movie";
 
 
 @Injectable({
@@ -18,11 +18,11 @@ export class Themoviedb {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.apiKey}`,
       'accept': 'application/json'
-    })
+    });
     let params = new HttpParams().set('page', page.toString())
     //return this.http.get<MovieDbResponse>(`${this.baseUrl}/now_playing?page=${page}`);
     return this.http.get<MovieDbResponse>(`${this.baseUrl}/now_playing`, { headers, params })
-    .pipe(map(response => response.results.map(item => this.mapToCustomMovie(item))));
+      .pipe(map(response => response.results.map(item => this.mapToCustomMovie(item))));
   }
 
   /*getNowPlayingMovie(page: number = 1): Observable<MovieDbResponse> {
@@ -36,6 +36,25 @@ export class Themoviedb {
   }*/
   getPopularMovies(page = 1) { }
 
+  getMovieDetails(id: number): Observable<MovieDetails> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.apiKey}`,
+      'accept': 'application/json'
+    })
+    return this.http.get<ApiMovieDetails>(`${this.baseUrl}/${id}`, { headers }).
+      pipe(map(response => this.mapToMovieDetails(response)));
+  }
+
+
+  /*getMovieDetails(id: number): Observable<ApiMovieDetails> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.apiKey}`,
+      'accept': 'application/json'
+    })
+    return this.http.get<ApiMovieDetails>(`${this.baseUrl}/${id}`, { headers })
+  }*/
+
+
   private mapToCustomMovie(data: ApiMovieData): Movie {
     return {
       id: data.id,
@@ -46,5 +65,18 @@ export class Themoviedb {
       description: data.overview,
       popularity: data.popularity
     };
+  }
+  private mapToMovieDetails(data: ApiMovieDetails): MovieDetails {
+    return {
+      id: data.id,
+      genres: data.genres,
+      originalLanguage: data.original_language,
+      originalTitle: data.original_title,
+      overview: data.overview,
+      popularity: data.popularity,
+      posterPath: data.poster_path,
+      productionCompanies: data.production_companies,
+      releaseDate: data.release_date
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Movie } from "@shared/interfaces/movie";
 
 @Component({
   selector: 'app-movie-card',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './movie-card.scss',
 })
 export class MovieCard {
+  movie = input.required<Movie>();
 
+  ngOnInit() {
+    console.log(this.movie);
+  }
 }
