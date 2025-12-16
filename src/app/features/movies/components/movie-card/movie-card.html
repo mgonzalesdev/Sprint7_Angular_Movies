@@ -1,7 +1,11 @@
-
-    <div class="card">
-        <h3>{{movie().title}}</h3>
-        <p>{{movie().releaseDate}} </p>
-        <p>{{movie().img}} </p>
-        <a href=""></a>
+<div class="group h-full bg-neutral-primary-soft block max-w-sm border border-default rounded-base shadow-xs">
+    <a [routerLink]="['/movies',movie().id]">
+        <img class="rounded-t-base transition duration-500 ease-in-out transform group-hover:scale-105" src="{{movie().img}}" alt="" />
+    </a>
+    <div class="p-2 text-left">
+        <a [routerLink]="['/movies',movie().id]">
+            <h5 class="text-xl font-semibold tracking-tight text-heading hover:text-fg-brand">{{movie().title.length > 30 ? (movie().title | slice:0:30) + '...' : movie().title }}</h5>
+        </a>
+        <p class="mb-2 text-body">{{movie().releaseDate}} </p>
     </div>
+</div>

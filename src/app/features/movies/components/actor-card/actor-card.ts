@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Actor } from '@shared/interfaces/movie';
 
 @Component({
   selector: 'app-actor-card',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './actor-card.scss',
 })
 export class ActorCard {
+  actor = input<Actor>();
 
 }

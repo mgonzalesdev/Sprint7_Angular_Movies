@@ -1,16 +1,19 @@
+import { SlicePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Movie } from "@shared/interfaces/movie";
 
 @Component({
   selector: 'app-movie-card',
-  imports: [],
+  imports: [RouterLink,SlicePipe],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.scss',
 })
 export class MovieCard {
   movie = input.required<Movie>();
+  
 
   ngOnInit() {
-    console.log(this.movie);
+    //console.log(this.movie);
   }
 }

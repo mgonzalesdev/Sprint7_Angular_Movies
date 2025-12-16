@@ -1,6 +1,13 @@
 import { Routes } from '@angular/router';
-import { MovieList } from '@features/movies/pages/movie-list/movie-list';
+
+import { Welcome } from '@features/welcome/welcome';
 
 export const routes: Routes = [
-    { path: 'test', component: MovieList },
+    { path: '', component: Welcome },
+    {
+        path: 'movies',
+        loadChildren: () => import('@features/movies/movies.routes').then(m => m.routes)
+    },
+    { path: '**', redirectTo: '' },
+
 ];

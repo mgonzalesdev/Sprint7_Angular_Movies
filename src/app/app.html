@@ -1,8 +1,7 @@
-<main class="main">
-  <div class="content">
-  </div>
-</main>
 
-
-
-<router-outlet />
+<div class="flex flex-col h-screen">
+  <app-navbar></app-navbar>
+  <main class="flex-1 container  mx-auto px-4 py-8 pt-16">
+    <router-outlet></router-outlet>
+  </main>
+</div>

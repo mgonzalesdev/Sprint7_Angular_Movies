@@ -1,1 +1,27 @@
-<p>movie-detail works!</p>
+<div *ngIf="movie() as details" class="movie-container">
+ <section
+  [style.background-image]="'url(' + details.posterBackdrop + ')'"
+  class="w-full bg-center bg-no-repeat bg-cover bg-neutral-900 bg-black/70 bg-blend-soft-light flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-white p-8"
+>
+       
+        <div class="flex items-center justify-center w-full  bg-neutral-quaternary rounded-base sm:w-96">
+            <img src="{{details.img}}" alt="">
+        </div>
+        <div class="w-full">
+                <h2 class="text-4xl font-bold text-heading text-white">{{details.originalTitle}} ({{details.releaseDate |
+                    date:'y'}})</h2>
+
+            <div class="text-lg italic font-semibold text-heading text-white">{{details.genres}}</div>
+            <div class="">{{details.overview}}</div>
+        </div>
+        <span class="sr-only">Loading...</span>
+    </section>
+    <div class="w-full">
+        <p>Actors</p>
+        @if (actors()) {
+        @for (actor of actors(); track actor.name) {
+        <!-- <app-actor-card [actor]="actor"></app-actor-card> -->
+        }
+        }
+    </div>
+</div>
