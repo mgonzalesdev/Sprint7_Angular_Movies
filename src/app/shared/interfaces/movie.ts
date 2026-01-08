@@ -39,7 +39,7 @@ export interface ApiMovieDetails {
     production_companies: [];
     release_date: string; // Formato YYYY-MM-DD
     revenue: number;
-    runtime: number | null; // Minutos
+    runtime: number; // Minutos
     status: string;
     tagline: string | null;
     title: string;
@@ -92,4 +92,7 @@ export interface MovieDetails {
     posterBackdrop: string | null;
     productionCompanies: [];
     releaseDate: string;
+    runtime: string| null;
+    voteAverage:number;
+    voteCount:number
 }

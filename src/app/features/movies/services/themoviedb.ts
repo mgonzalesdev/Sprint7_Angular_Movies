@@ -25,17 +25,17 @@ export class Themoviedb {
     return this.http.get<apiMoviesResponse>(`${this.baseUrl}/now_playing`, { headers, params })
       .pipe(
         map(apiResponse => this.mapToCustomResponse(apiResponse)
-      ));
+        ));
   }
-    private mapToCustomResponse(apiResponse: apiMoviesResponse): movieDbResponse {
+  private mapToCustomResponse(apiResponse: apiMoviesResponse): movieDbResponse {
     // 1. Mapeamos los resultados customizados
-    const customMoviesList: Movie[] = apiResponse.results.map(apiMovie => 
+    const customMoviesList: Movie[] = apiResponse.results.map(apiMovie =>
       this.mapToCustomMovie(apiMovie)
     );
 
     // 2. Devolvemos el objeto customizado que incluye totalPages y el array customizado
     return {
-      totalPages: apiResponse.total_pages, 
+      totalPages: apiResponse.total_pages,
       movies: customMoviesList
     };
   }
@@ -92,7 +92,10 @@ export class Themoviedb {
       img: data.poster_path ? `${this.imgUrl}${data.poster_path}` : 'assets/images/placeholder.jpg',
       posterBackdrop: data.backdrop_path ? `${this.imgUrl}${data.backdrop_path}` : 'assets/images/placeholder.jpg',
       productionCompanies: data.production_companies,
-      releaseDate: data.release_date
+      releaseDate: data.release_date,
+      runtime: this.transform(data.runtime),
+      voteAverage:data.vote_average,
+      voteCount:data.vote_count,
     }
   }
   private mapToCustomActor(data: ApiActor): Actor {
@@ -100,6 +103,11 @@ export class Themoviedb {
       name: data.name,
       imgProfile: data.profile_path ? `${this.imgUrl}${data.profile_path}` : 'assets/images/placeholder.png',
       character: data.character
-    };
+    }
+  }
+  private transform(minutes: number): string {
+    const hours = Math.floor(minutes / 60);
+    const minutesLeft = minutes % 60;
+    return `${hours < 10 ? '0' : ''}${hours}:${minutesLeft < 10 ? '0' : ''}${minutesLeft}:00`
   }
 }

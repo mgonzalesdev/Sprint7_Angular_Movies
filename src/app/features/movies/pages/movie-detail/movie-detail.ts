@@ -43,7 +43,8 @@ export class MovieDetail {
   // Ahora sí, pasamos Observables a toSignal()
   movie= toSignal(this.details$);
   actors = toSignal(this.actors$);
-  
+
+
 
 }
 
