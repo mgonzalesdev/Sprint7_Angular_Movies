@@ -51,7 +51,7 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
-                class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+                class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
 
                 <li>
                     <a routerLink="/" routerLinkActive="text-blue-700 md:text-blue-500"
@@ -65,9 +65,26 @@
                     <a routerLink="/movies" routerLinkActive="text-blue-700 md:text-blue-500"
                         class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:p-0">
                         Peliculas
-                    </a>
-                </li>  
-                <button (click)="authService.logout()">Salir</button>
+                    </a>                    
+                </li>
+                    <li class="relative group py-2 md:py-0">
+                    <!-- Circulo con Inicial -->
+                    <div class="w-9 h-9 flex items-center justify-center bg-blue-600 text-white rounded-full cursor-pointer ring-2 ring-neutral-tertiary">
+                        <span class="text-sm font-bold">{{ userInitial() }}</span>
+                    </div>
+
+                    <!-- Tooltip (Aparece al hacer hover) -->
+                    <div role="tooltip" class="absolute z-30 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-block px-3 py-2 text-xs font-medium text-white bg-gray-900 rounded-lg shadow-sm -left-16 top-11 whitespace-nowrap dark:bg-gray-700">
+                        {{ authService.currentUser()?.email }}
+                        <div class="absolute -top-1 left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-gray-900 dark:border-b-gray-700"></div>
+                    </div>
+
+
+
+                    
+
+                </li>
+                <button (click)="logout()">Salir</button>
                 } @else {
                 <li>
                     <a routerLink="/login" routerLinkActive="text-blue-700 md:text-blue-500"

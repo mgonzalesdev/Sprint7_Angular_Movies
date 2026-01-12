@@ -20,7 +20,7 @@ export class Navbar {
       map(event => (event as NavigationEnd).urlAfterRedirects)
     )
   );
-  
+
   showNavbar = computed(() => {
     const url = this.currentUrl() || '';
     const isAuthPage = url.includes('/login') || url.includes('/register');
@@ -29,4 +29,19 @@ export class Navbar {
     // Si hay usuario, siempre mostramos. Si no hay usuario, solo mostramos si NO es login/reg
     return user ? true : !isAuthPage;
   });
+
+  userInitial = computed(() => {
+    const email = this.authService.currentUser()?.email;
+    return email ? email.charAt(0).toUpperCase() : '?';
+  });
+
+  async logout() {
+   
+      try {
+    await this.authService.logout();
+    this.router.navigate(['/']); // El Navbar decide ir al Inicio
+  } catch (error) {
+    console.error('Error al salir', error);
+  }
+  }
 }
