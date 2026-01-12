@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from './auth';
@@ -28,7 +27,6 @@ describe('AuthService', () => {
   });
 
   it('isAuthenticated() debería devolver false si no hay usuario', () => {
-    // Al ser un Signal, lo llamamos como función
     expect(service.isAuthenticated()).toBeFalse();
   });
 });

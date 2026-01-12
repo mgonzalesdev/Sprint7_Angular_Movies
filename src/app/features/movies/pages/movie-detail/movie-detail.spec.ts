@@ -13,17 +13,15 @@ describe('Movie Detail', () => {
   let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    // 1. Crear mocks de los servicios
     movieServiceSpy = jasmine.createSpyObj('Themoviedb', ['getMovieDetails', 'getActors']);
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      // MovieDetail es standalone, se importa directamente
       imports: [MovieDetail],
       providers: [
         { provide: Themoviedb, useValue: movieServiceSpy },
         { provide: Router, useValue: routerSpy },
-        provideRouter([]) // Necesario para que RouterLink funcione en el template
+        provideRouter([]) 
       ]
     }).compileComponents();
 
@@ -32,13 +30,11 @@ describe('Movie Detail', () => {
   });
 
   it('debería crearse el componente', () => {
-    // Establecemos el input requerido antes de la detección de cambios
     fixture.componentRef.setInput('id', 550);
     expect(component).toBeTruthy();
   });
 
   it('debería cargar los detalles de la película cuando el id cambia', () => {
-    // 1. Ajustamos el mock para que use una propiedad que SÍ existe en MovieDetails
     const mockMovie: Partial<MovieDetails> = {
       originalTitle: 'Fight Club',
       overview: 'Prueba'
@@ -53,17 +49,16 @@ describe('Movie Detail', () => {
 
     expect(movieServiceSpy.getMovieDetails).toHaveBeenCalledWith(550);
 
-    // 2. Comprobamos la propiedad que realmente existe en la interfaz
+
     expect(component.movie()?.originalTitle).toBe('Fight Club');
   });
 
   it('debería mostrar alerta y navegar a /movies si el servicio falla (Error 404)', () => {
-    // Simulamos un error de API
+
     const errorResponse = { error: { status_message: 'Película no encontrada' } };
     movieServiceSpy.getMovieDetails.and.returnValue(throwError(() => errorResponse));
     movieServiceSpy.getActors.and.returnValue(of([]));
 
-    // Espiamos el alert nativo del navegador
     const alertSpy = spyOn(window, 'alert');
 
     fixture.componentRef.setInput('id', 99999);

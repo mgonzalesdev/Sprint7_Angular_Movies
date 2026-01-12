@@ -2,7 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from "@environments/environment";
-import { movieDbResponse, ApiMovie, Movie, ApiMovieDetails, MovieDetails, ApiActor, Actor, CreditsResponse, apiMoviesResponse } from "@shared/interfaces/movie";
+import { movieDbResponse, ApiMovie, Movie, ApiMovieDetails, MovieDetails, apiMoviesResponse } from "@shared/interfaces/movie";
+import { Actor, ApiActor, CreditsResponse } from '@shared/interfaces/actor';
 
 
 @Injectable({
