@@ -16,9 +16,9 @@
                         <path
                             d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                     </svg>
-                    <p class="ms-2 text-sm font-bold ">{{details.voteAverage |  number : '1.0-2'}}</p>
+                    <p class="ms-2 text-sm font-bold ">{{details.voteAverage | number : '1.0-2'}}</p>
                     <span class="w-1 h-1 mx-1.5 bg-neutral-quaternary rounded-full"></span>
-                    <p  class="text-sm font-medium  ">{{details.voteCount}} valoraciones</p>
+                    <p class="text-sm font-medium  ">{{details.voteCount}} valoraciones</p>
                 </div>
             </div>
             <div class="text-lg italic font-semibold text-heading text-white py-3">{{details.genres}}</div>
@@ -26,12 +26,22 @@
         </div>
         <span class="sr-only">Loading...</span>
     </section>
-    <div class="w-full">
-        <p>Actors</p>
-        @if (actors()) {
+<div class="mt-12 px-4">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-heading">Reparto Principal</h3>
+        <!-- Indicador visual opcional -->
+        <span class="text-xs text-gray-400 md:hidden">Desliza para ver más →</span>
+    </div>
+    
+    <!-- Contenedor del Carrusel Estilo Flowbite -->
+    <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
         @for (actor of actors(); track actor.name) {
-        <!-- <app-actor-card [actor]="actor"></app-actor-card> -->
-        }
+            <!-- Cada tarjeta es un punto de anclaje (snap) -->
+            <div class="flex-none w-32 md:w-40 snap-start">
+                <app-actor-card [actor]="actor" />
+            </div>
         }
     </div>
+</div>
+
 </div>

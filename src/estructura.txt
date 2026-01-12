@@ -1,0 +1,84 @@
+Listado de rutas de carpetas
+El n£mero de serie del volumen es 368E-E60F
+C:.
+³   estructura.txt
+³   index.html
+³   main.ts
+³   styles.scss
+³   
+ÃÄÄÄapp
+³   ³   app.config.ts
+³   ³   app.html
+³   ³   app.routes.ts
+³   ³   app.scss
+³   ³   app.ts
+³   ³   
+³   ÃÄÄÄcore
+³   ³   ÃÄÄÄauthentication
+³   ³   ³       auth.guard.ts
+³   ³   ³       auth.spec.ts
+³   ³   ³       auth.ts
+³   ³   ³       public.guard.ts
+³   ³   ³       
+³   ³   ÀÄÄÄcomponents
+³   ³       ÀÄÄÄnavbar
+³   ³               navbar.html
+³   ³               navbar.scss
+³   ³               navbar.ts
+³   ³               
+³   ÃÄÄÄfeatures
+³   ³   ÃÄÄÄauth
+³   ³   ³   ÀÄÄÄpages
+³   ³   ³       ÃÄÄÄlogin
+³   ³   ³       ³       login.html
+³   ³   ³       ³       login.scss
+³   ³   ³       ³       login.ts
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄregister
+³   ³   ³               register.html
+³   ³   ³               register.scss
+³   ³   ³               register.ts
+³   ³   ³               
+³   ³   ÃÄÄÄmovies
+³   ³   ³   ³   movies.routes.ts
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄcomponents
+³   ³   ³   ³   ÃÄÄÄactor-card
+³   ³   ³   ³   ³       actor-card.html
+³   ³   ³   ³   ³       actor-card.scss
+³   ³   ³   ³   ³       actor-card.ts
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄmovie-card
+³   ³   ³   ³           movie-card.html
+³   ³   ³   ³           movie-card.scss
+³   ³   ³   ³           movie-card.ts
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄpages
+³   ³   ³   ³   ÃÄÄÄmovie-detail
+³   ³   ³   ³   ³       movie-detail.html
+³   ³   ³   ³   ³       movie-detail.scss
+³   ³   ³   ³   ³       movie-detail.spec.ts
+³   ³   ³   ³   ³       movie-detail.ts
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄmovie-list
+³   ³   ³   ³           movie-list.html
+³   ³   ³   ³           movie-list.scss
+³   ³   ³   ³           movie-list.spec.ts
+³   ³   ³   ³           movie-list.ts
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄservices
+³   ³   ³           themoviedb.ts
+³   ³   ³           
+³   ³   ÀÄÄÄwelcome
+³   ³           welcome.html
+³   ³           welcome.scss
+³   ³           welcome.ts
+³   ³           
+³   ÀÄÄÄshared
+³       ÀÄÄÄinterfaces
+³               movie.ts
+³               
+ÀÄÄÄenvironments
+        environment.development.ts
+        environment.ts
+        
