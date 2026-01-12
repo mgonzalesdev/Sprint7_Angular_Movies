@@ -28,27 +28,6 @@ export class Themoviedb {
         map(apiResponse => this.mapToCustomResponse(apiResponse)
         ));
   }
-  private mapToCustomResponse(apiResponse: apiMoviesResponse): movieDbResponse {
-    // 1. Mapeamos los resultados customizados
-    const customMoviesList: Movie[] = apiResponse.results.map(apiMovie =>
-      this.mapToCustomMovie(apiMovie)
-    );
-
-    // 2. Devolvemos el objeto customizado que incluye totalPages y el array customizado
-    return {
-      totalPages: apiResponse.total_pages,
-      movies: customMoviesList
-    };
-  }
-
-  /*getNowPlayingMovie(page: number = 1): Observable<MovieDbResponse> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.apiKey}`,
-      'accept': 'application/json'
-    });
-    let params = new HttpParams().set('page', page.toString())
-    return this.http.get<MovieDbResponse>(`${this.baseUrl}/now_playing`, { headers, params });
-  }*/
 
   getMovieDetails(id: number): Observable<MovieDetails> {
     const headers = new HttpHeaders({
@@ -68,15 +47,34 @@ export class Themoviedb {
       pipe(map(response => response.cast.map(item => this.mapToCustomActor(item))));
   }
 
+  getRecommendations(id: number): Observable<Movie[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.apiKey}`,
+      'accept': 'application/json'
+    })
+    return this.http.get<apiMoviesResponse>(`${this.baseUrl}/${id}/recommendations`, { headers })
+      .pipe(
+        map(response => response.results.map(apiMovie => this.mapToCustomMovie(apiMovie)))
+      );
+  }
 
+  private mapToCustomResponse(apiResponse: apiMoviesResponse): movieDbResponse {
+    const customMoviesList: Movie[] = apiResponse.results.map(apiMovie =>
+      this.mapToCustomMovie(apiMovie)
+    );
+
+    return {
+      totalPages: apiResponse.total_pages,
+      movies: customMoviesList
+    };
+  }
 
   private mapToCustomMovie(data: ApiMovie): Movie {
     return {
       id: data.id,
       title: data.title,
-      img: data.poster_path ? `${this.imgUrl}${data.poster_path}` : 'assets/images/placeholder.png',
-      posterBackdrop: data.backdrop_path ? data.backdrop_path : 'assets/images/placeholder.png',
-      // img: data.poster_path ? `${this.imageUrlBase}${result.poster_path}` : 'assets/images/placeholder.png',
+      img: data.poster_path ? `${this.imgUrl}${data.poster_path}` : '/placeholder.png',
+      posterBackdrop: data.backdrop_path ? data.backdrop_path : '/placeholder.png',
       releaseDate: data.release_date,
       description: data.overview,
       popularity: data.popularity
@@ -90,19 +88,19 @@ export class Themoviedb {
       originalTitle: data.original_title,
       overview: data.overview,
       popularity: data.popularity,
-      img: data.poster_path ? `${this.imgUrl}${data.poster_path}` : 'assets/images/placeholder.jpg',
-      posterBackdrop: data.backdrop_path ? `${this.imgUrl}${data.backdrop_path}` : 'assets/images/placeholder.jpg',
+      img: data.poster_path ? `${this.imgUrl}${data.poster_path}` : '/placeholder.png',
+      posterBackdrop: data.backdrop_path ? `${this.imgUrl}${data.backdrop_path}` : '/placeholder.png',
       productionCompanies: data.production_companies,
       releaseDate: data.release_date,
       runtime: this.transform(data.runtime),
-      voteAverage:data.vote_average,
-      voteCount:data.vote_count,
+      voteAverage: data.vote_average,
+      voteCount: data.vote_count,
     }
   }
   private mapToCustomActor(data: ApiActor): Actor {
     return {
       name: data.name,
-      imgProfile: data.profile_path ? `${this.imgUrl}${data.profile_path}` : 'assets/images/placeholder.png',
+      imgProfile: data.profile_path ? `${this.imgUrl}${data.profile_path}` : '/person.png',
       character: data.character
     }
   }

@@ -26,7 +26,6 @@ export class Navbar {
     const isAuthPage = url.includes('/login') || url.includes('/register');
     const user = this.authService.currentUser();
 
-    // Si hay usuario, siempre mostramos. Si no hay usuario, solo mostramos si NO es login/reg
     return user ? true : !isAuthPage;
   });
 
@@ -39,7 +38,7 @@ export class Navbar {
    
       try {
     await this.authService.logout();
-    this.router.navigate(['/']); // El Navbar decide ir al Inicio
+    this.router.navigate(['/']); 
   } catch (error) {
     console.error('Error al salir', error);
   }

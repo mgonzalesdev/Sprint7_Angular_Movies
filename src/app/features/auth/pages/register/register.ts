@@ -21,8 +21,6 @@ export class Register {
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
   constructor() {
-    // REDIRECCIÓN REACTIVA: 
-    // Si el estado cambia a autenticado, sal de aquí inmediatamente.
     effect(() => {
       if (this.authService.isAuthenticated()) {
         this.router.navigate(['/movies']);
@@ -34,11 +32,9 @@ export class Register {
       const { email, password } = this.registerForm.getRawValue();
 
       try {
-        // Como tu servicio ya tiene el redirect, solo esperamos a que termine
         await this.authService.register(email, password);
         console.log('Registro exitoso');
       } catch (err: any) {
-        // Aquí capturas el "throw error" de tu servicio
         this.error = this.mapFirebaseError(err.code);
         console.error('Error en registro:', err);
       }

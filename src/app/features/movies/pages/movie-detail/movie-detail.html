@@ -29,16 +29,27 @@
 <div class="mt-12 px-4">
     <div class="flex items-center justify-between mb-6">
         <h3 class="text-2xl font-bold text-heading">Reparto Principal</h3>
-        <!-- Indicador visual opcional -->
         <span class="text-xs text-gray-400 md:hidden">Desliza para ver más →</span>
     </div>
     
-    <!-- Contenedor del Carrusel Estilo Flowbite -->
     <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
         @for (actor of actors(); track actor.name) {
-            <!-- Cada tarjeta es un punto de anclaje (snap) -->
             <div class="flex-none w-32 md:w-40 snap-start">
                 <app-actor-card [actor]="actor" />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="mt-12 px-4">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-heading">Recomendaciones</h3>
+    </div>
+    
+    <div class="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
+            @for (movie of recommendations(); track movie.id) {
+            <div class="flex-none w-32 md:w-40 snap-start">
+               <app-movie-card [movie]="movie"></app-movie-card>
             </div>
         }
     </div>

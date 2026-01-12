@@ -6,7 +6,7 @@ export const publicGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  // Si ya está autenticado, no lo dejamos ver Login/Register
+  // Si ya está autenticado, no dejamos ver Login/Register
   if (authService.isAuthenticated()) {
     return router.createUrlTree(['/movies']);
   }
