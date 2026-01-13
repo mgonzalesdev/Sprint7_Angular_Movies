@@ -70,5 +70,5 @@ ng test
 
 [VER DEMO](https://mgonzalesdev.github.io/Sprint7_Angular_Movies/)
 
-user:test@gmail.com
-pass:111111
+user:test@gmail.com  
+pass:123456
