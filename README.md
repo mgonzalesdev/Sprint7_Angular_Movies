@@ -1,59 +1,71 @@
-# MovieApp
+# 🎬 Angular Movies 2026
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+¡Bienvenido a **Angular Movies**! Una aplicación moderna de catálogo de películas construida con **Angular 20**. Esta aplicación permite explorar los estrenos actuales, consultar detalles técnicos del reparto y gestionar la autenticación de usuarios mediante Firebase.
 
-## Development server
+![App](public/app.png)
+![Peliculas](public/movies.png)
+![Pelicula Detalles](public/movie.png)
 
-To start a local development server, run:
+
+## 🌐 Tecnologías Utilizadas
+- **Angular 20** (Core Framework)  
+- **Firebase Auth** (Autenticación)  
+- **Tailwind CSS** (Estilos)  
+- **Flowbite** (Componentes UI)  
+- **RxJS** (Programación Reactiva)  
+- **Jasmine/Karma** (Testing)  
+
+## 🚀 Características Principales
+
+- **Angular 20 Standalone Architecture:** Componentes 100% independientes sin módulos innecesarios.
+- **Reactive State con Signals:** Uso intensivo de `signal`, `computed`, `effect` y `toSignal` para una reactividad óptima.
+- **Autenticación con Firebase:** Flujo completo de registro y login con persistencia de sesión y manejo de errores.
+- **Integración con TMDB API:** Consumo de datos en tiempo real de [The Movie Database](www.themoviedb.org).
+- **Scroll Infinito:** Carga dinámica de películas mediante el operador `scan` de RxJS para acumular resultados.
+- **UI con Flowbite:** Diseño basado en Tailwind CSS con componentes interactivos (Navbar, Dropdowns, Cards).
+- **Pruebas Unitarias:** Cobertura de tests con Jasmine/Karma para garantizar la calidad del código.
+
+
+## 📂 Estructura del proyecto
+```text
+src/app/
+├── core/ # Guardianes (Auth/Public), Servicios Globales y Navbar
+├── features/ # Funcionalidades principales por dominio
+│ ├── auth/ # Páginas de Login y Registro
+│ ├── movies/ # Listado, Detalle, Reparto y Servicios TMDB
+│ └── welcome/ # Landing page de bienvenida
+├── shared/ # Interfaces globales y tipos de datos
+└── assets/ # Imágenes, logos y recursos estáticos
+```   
+
+
+## 🛠️ Instalación y Configuración
+
+### 1. Clonar el repositorio e Instalar dependencias
+```bash
+git clone github.com
+cd movie_app 
+npm install 
+```
+
+### ▶️ 3. Ejecución  
+
+Inicia el servidor de desarrollo con:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abre el navegador en:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+http://localhost:4200
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+### 4. 🧪 Pruebas Unitarias
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### Demo
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[VER DEMO](https://mgonzalesdev.github.io/Sprint6_AngularI_Presupuestos/)
