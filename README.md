@@ -19,7 +19,7 @@
 
 - **Angular 20 Standalone Architecture:** Componentes 100% independientes sin módulos innecesarios.
 - **Reactive State con Signals:** Uso intensivo de `signal`, `computed`, `effect` y `toSignal` para una reactividad óptima.
-- **Autenticación con Firebase:** Flujo completo de registro y login con persistencia de sesión y manejo de errores.
+- **Autenticación con Firebase:** Flujo completo de registro y login con manejo de errores.
 - **Integración con TMDB API:** Consumo de datos en tiempo real de [The Movie Database](www.themoviedb.org).
 - **Scroll Infinito:** Carga dinámica de películas mediante el operador `scan` de RxJS para acumular resultados.
 - **UI con Flowbite:** Diseño basado en Tailwind CSS con componentes interactivos (Navbar, Dropdowns, Cards).
@@ -43,7 +43,7 @@ src/app/
 
 ### 1. Clonar el repositorio e Instalar dependencias
 ```bash
-git clone github.com
+git clone https://github.com/mgonzalesdev/Sprint7_Angular_Movies.git
 cd movie_app 
 npm install 
 ```
