@@ -68,4 +68,4 @@ ng test
 
 ### Demo
 
-[VER DEMO](https://mgonzalesdev.github.io/Sprint6_AngularI_Presupuestos/)
+[VER DEMO](https://mgonzalesdev.github.io/Sprint7_Angular_Movies/)
